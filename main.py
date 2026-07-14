@@ -4,6 +4,7 @@ from Config.db import BASE, engine
 from Middleware.get_json import JSONMiddleware
 from Router.Auth import auth_router
 from Router.IaUsuarios import ia_usuarios_router
+from Router.Correos import correos_router
 from pathlib import Path
 
 route = Path.cwd()
@@ -23,6 +24,7 @@ app.add_middleware(
 
 app.include_router(auth_router,         prefix="/auth")
 app.include_router(ia_usuarios_router,  prefix="/ia-usuarios")
+app.include_router(correos_router,      prefix="/correos")
 
 BASE.metadata.create_all(bind=engine)
 
